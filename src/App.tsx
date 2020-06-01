@@ -1,30 +1,27 @@
 import React from 'react';
-import { useQuery } from "react-query";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { NavigationBar, NavigationLink } from './components/Navigation';
+import { Home, Episodes, Characters, Locations } from './pages';
 import './App.css';
 
-interface RickAndMortyAPIResponse {
-  characters: string;
-  episodes: string;
-  location: string;
-}
-
-const getPosts = async (): Promise<RickAndMortyAPIResponse> => {
-  const response = await fetch(process.env.REACT_APP_API_BASE_URL);
-  if (response.ok) {
-    const data = await response.json();
-    return data;
-  }
-  const { status: httpCode, statusText, url } = response;
-  throw new Error(`${httpCode} | ${statusText} ${url}`);
-};
-
 function App() {
-  const { status, data, error } = useQuery('base', getPosts);
-  console.log(status, data, error);
-
   return (
-    <div className="App">
-    </div>
+    <Router>
+      <header>
+        <NavigationBar>
+          <NavigationLink to="/">Home</NavigationLink>
+          <NavigationLink to="/episodes">Episodes</NavigationLink>
+          <NavigationLink to="/characters">Characters</NavigationLink>
+          <NavigationLink to="/locations">Locations</NavigationLink>
+        </NavigationBar>
+      </header>
+      <Switch>
+        <Route path="/episodes" component={Episodes} />
+        <Route path="/characters" component={Characters} />
+        <Route path="/locations" component={Locations} />
+        <Route path="/" component={Home} />
+      </Switch>
+    </Router>
   );
 }
 
