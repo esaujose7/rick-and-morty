@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
 import { useQuery } from "react-query";
+import { Link } from 'react-router-dom';
+import { Pagination } from '../components/Pagination';
 
 interface InfoObjectAPI {
   count: number;
@@ -44,20 +46,25 @@ const Episodes: FC = () => {
     return (<div>Error: {error}</div>);
   }
 
-  const { results } = data;
-  return (<ul className="columns is-multiline">
-    {
-      results.map(result => {
-        return (
-          <li key={result.episode} className="column is-one-third">
-            {result.episode}<br />
-            Fecha de estreno: {result.air_date}<br />
-            {result.name}
-          </li>
-        )
-      })
-    }
-    </ul>
+  return (
+    <>
+      <ul className="columns is-multiline">
+        {
+          data.results.map(result => {
+            return (
+              <li key={result.episode} className="column is-one-third has-text-centered">
+                <Link to={`/episodes/${result.id}`}>
+                  {result.episode}<br />
+                  {result.name}<br />
+                  {result.air_date}
+                </Link >
+              </li>
+            )
+          })
+        }
+      </ul>
+      <Pagination />
+    </>
   )
 }
 
