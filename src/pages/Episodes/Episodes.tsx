@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useQuery } from "react-query";
 import { Link } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
-import { InfoSchema } from '../../types/common';
+import { ListingsResponse } from '../../types/common';
 
 export interface EpisodeSchema {
   air_date: string;
@@ -14,12 +14,7 @@ export interface EpisodeSchema {
   url: string;
 }
 
-export interface EpisodesResponseAPI {
-  info: InfoSchema;
-  results: EpisodeSchema[];
-}
-
-const getEpisodes = async (): Promise<EpisodesResponseAPI> => {
+const getEpisodes = async (): Promise<ListingsResponse<EpisodeSchema>> => {
   const response = await fetch(process.env.REACT_APP_API_BASE_URL + 'episode');
   if (response.ok) {
     const data = await response.json();

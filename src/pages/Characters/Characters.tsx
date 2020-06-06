@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import { useQuery } from "react-query";
 import { Link } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
-import { InfoSchema } from '../../types/common';
+import { ListingsResponse } from '../../types/common';
 
 export interface CharacterSchema {
   id: number;
@@ -17,12 +17,7 @@ export interface CharacterSchema {
   created: string;
 }
 
-export interface CharacterResponseAPI {
-  info: InfoSchema;
-  results: CharacterSchema[];
-}
-
-const getCharacters = async (): Promise<CharacterResponseAPI> => {
+const getCharacters = async (): Promise<ListingsResponse<CharacterSchema>> => {
   const response = await fetch(process.env.REACT_APP_API_BASE_URL + 'character');
   if (response.ok) {
     const data = await response.json();
