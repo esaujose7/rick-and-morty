@@ -1,6 +1,6 @@
 import Home from './Home';
 import { Episodes, Episode } from './Episodes';
-import { Locations } from './Locations';
+import { Locations, Location } from './Locations';
 import { Characters, Character } from './Characters';
 
-export { Home, Episodes, Episode, Locations, Characters, Character };
+export { Home, Episodes, Episode, Locations, Location, Characters, Character };
