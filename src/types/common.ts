@@ -4,3 +4,8 @@ export interface InfoSchema {
   pages: number;
   prev: string | null;
 }
+
+export interface ListingsResponse<T> {
+  info: InfoSchema;
+  results: T[];
+}
