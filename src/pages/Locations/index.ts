@@ -1,3 +1,4 @@
 import Locations from './Locations';
+import Location from './Location';
 
-export { Locations };
+export { Locations, Location };
