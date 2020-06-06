@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { NavigationBar, NavigationLink } from './components/Navigation';
-import { Home, Episodes, Episode, Characters, Character, Locations } from './pages';
+import { Home, Episodes, Episode, Characters, Character, Locations, Location } from './pages';
 import './App.css';
 
 function App() {
@@ -20,6 +20,7 @@ function App() {
         <Route path="/episodes" component={Episodes} />
         <Route path="/characters/:id" component={Character} />
         <Route path="/characters" component={Characters} />
+        <Route path="/locations/:id" component={Location} />
         <Route path="/locations" component={Locations} />
         <Route path="/" component={Home} />
       </Switch>
