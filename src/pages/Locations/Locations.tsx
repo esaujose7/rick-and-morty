@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { useQuery } from "react-query";
 import { Link } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination';
-import { ListingsResponse } from '../../types/common';
+import { ListingsResponse } from '../../types';
 import { CharacterSchema } from '../Characters/Characters';
 
 export interface LocationSchema {
